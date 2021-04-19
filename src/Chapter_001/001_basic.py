@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 
-def my_constant():
+def constant_basic():
     """
     常量
     """
@@ -41,6 +41,48 @@ def my_constant():
     print('const_004_with_shape = ', const_004_with_shape)
 
 
-if __name__ == '__main__':
+def constant_calculate():
+    """
+    常量计算
+    """
 
-    my_constant()
+    print('\n\n- 常数计算 ------------------------')
+    # 常数计算
+    x = tf.constant([[1, 2], [3, 4]], dtype=tf.float32)
+    y = x + 2
+    print('y = ', y)
+    y = x * 3
+    print('y = ', y)
+    y = x ** 2
+    print('y = ', y)
+    y = x / 3
+    print('y = ', y)
+
+    # 注意：若定义`x = tf.constant([[1, 2], [3, 4]], dtype=tf.int8)`，则会报错
+    # tensorflow.python.framework.errors_impl.InvalidArgumentError: Value
+    # for attr 'T' of int8 is not in the list of allowed values: bfloat16, float, half, double, int32, int64, complex64,
+    # complex128; NodeDef: {{node Pow}}; Op < name = Pow;
+    # signature = x:T, y: T -> z: T;
+    # attr = T:type, allowed = [DT_BFLOAT16, DT_FLOAT, DT_HALF, DT_DOUBLE, DT_INT32, DT_INT64, DT_COMPLEX64,
+    #                           DT_COMPLEX128] > [Op:Pow]
+
+    print('\n\n- 两个常量计算 ------------------------')
+    # 两个常量计算
+    x1 = tf.constant([[11, 12], [21, 22]], dtype=tf.float32)
+    x2 = tf.constant([[5, 6], [7, 8]], dtype=tf.float32)
+    y = x1 + x2
+    print('y = ', y)
+    y = x1 - x2
+    print('y = ', y)
+    y = x1 * x2
+    print('y = ', y)
+    y = x1 / x2
+    print('y = ', y)
+
+    y = pow(x1, 1 / 2)
+    print('y = ', y)
+
+
+if __name__ == '__main__':
+    constant_basic()
+    constant_calculate()
