@@ -257,6 +257,8 @@ def linear_algebra():
 
         # 反向传播求梯度
         dloss_dw, dloss_db = tape.gradient(loss, [w, b])
+        del tape
+
         # 梯度下降法更新参数
         w.assign_sub(learn_rate * dloss_dw)
         b.assign_sub(learn_rate * dloss_db)

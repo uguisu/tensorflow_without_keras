@@ -85,9 +85,11 @@ def constant_calculate():
 
 def calculate():
 
+    # 矩阵乘法
     x = tf.constant([[1, 2], [3, 4]], dtype=tf.float32)
     y = tf.constant([1, 0], dtype=tf.float32, shape=(2, 1))
     print(tf.matmul(x, y), '\n')
+    # `@`也可以表示两个矩阵相乘
     print(x @ y, '\n')
 
 
