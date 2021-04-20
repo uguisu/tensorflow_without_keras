@@ -11,5 +11,5 @@ tensorflow low level API. Learn how to use tensorflow without Keras
 Start jupyter
 
 ```shell
-jupyter notebook --no-browser --port=8086 --ip=<YOUR IP>
+jupyter notebook --port=8086 --ip=127.0.0.1
 ```
