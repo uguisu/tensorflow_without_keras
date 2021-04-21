@@ -1,5 +1,8 @@
-# tensorflow_without_keras
-tensorflow low level API. Learn how to use tensorflow without Keras
+# Tensorflow without Keras
+
+This tutorial helps you understand how to use tensorflow low-level or mid-level API to complete the work.
+
+![level](img_001.png)
 
 ## Requirements
 - python3.7
