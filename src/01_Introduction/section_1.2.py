@@ -190,6 +190,16 @@ def random_shuffle():
     print('shuffled_tensor = ', shuffled_tensor, '\n')
 
 
+def random_truncated_normal():
+    # 使用指定的均值和标准差，生成正态分布. 若某个样本与平均值相差超过两个标准差，则该样本会被重新生成的信治所替代
+    # tf.random.truncated_normal(
+    #     shape, mean=0.0, stddev=1.0, dtype=tf.dtypes.float32, seed=None, name=None
+    # )
+    truncated_tensor = tf.random.truncated_normal(shape=[3, 2], mean=0.0, stddev=1.0)
+
+    print('truncated_tensor = ', truncated_tensor, '\n')
+
+
 def linear_algebra():
     """
     线性代数 Y = XW + b
@@ -249,4 +259,5 @@ if __name__ == '__main__':
     random_categorical()
     random_gamma()
     random_shuffle()
+    random_truncated_normal()
     linear_algebra()
