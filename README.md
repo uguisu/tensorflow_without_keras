@@ -6,7 +6,7 @@ This tutorial helps you understand how to use tensorflow low-level or mid-level 
 
 ## Requirements
 - python3.7
-- tensorflow 2.3.1
+- tensorflow 2.6.0
 - others: refer [requirements.txt](requirements.txt)
 
 ## Usable cmd
