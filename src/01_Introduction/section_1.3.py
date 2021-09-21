@@ -88,6 +88,22 @@ def demo_linspace():
     print('buildin_range = ', buildin_range)
 
 
+def demo_convert():
+    # tf还提供了convert_to_tensor()来方便的将numpy数组 / python list / python 标量转换为Tensor
+    # tf.convert_to_tensor(
+    #     value, dtype=None, dtype_hint=None, name=None
+    # )
+    # dtype_hint - 当dtype=None时, tf会优先尝试将数据作为dtype_hint所指定的类型进行处理
+
+    np_array = np.array([[1, 2, 3], [4, 5, 6]])
+    np_tensor = tf.convert_to_tensor(np_array)
+    print('np_tensor = ', np_tensor)
+
+    py_list = [[11, 12], [13, 14], [15, 16]]
+    py_tensor = tf.convert_to_tensor(py_list)
+    print('py_tensor = ', py_tensor)
+
+
 def confirm_version():
     print(tf.__version__)
 
@@ -99,3 +115,4 @@ if __name__ == '__main__':
     demo_fill()
     demo_eye()
     demo_linspace()
+    demo_convert()
