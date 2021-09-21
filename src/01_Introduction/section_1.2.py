@@ -7,55 +7,6 @@ from matplotlib import pyplot as plt
 from scipy.stats import gamma
 
 
-def matrix():
-    """
-    矩阵运算
-    """
-
-    # 单位矩阵
-    # def eye(num_rows: Any,
-    #         num_columns: Any = None,
-    #         batch_shape: Any = None,
-    #         dtype: DType = dtypes.float32,
-    #         name: Any = None) -> object
-    mt_001 = tf.eye(3, 3, dtype=tf.int32)
-    print('mt_001 = ', mt_001, '\n')
-
-    # 全零矩阵
-    # def zeros(shape: {_shape_tuple},
-    #           dtype: DType = dtypes.float32,
-    #           name: Any = None) -> Union[object, Tensor]
-    mt_002 = tf.zeros((3, 3), dtype=tf.int32)
-    print('mt_002 = ', mt_002, '\n')
-
-    # 按照模板创建全零矩阵
-    # 模板可以是: 数组, numpy数组, tf.constant对象
-    # def zeros_like(input: {shape, dtype},
-    #                   dtype: Any = None,
-    #                   name: Any = None) -> Union[object, Tensor]
-    numpy_template = np.array([[1, 2, 3], [11, 22, 33]])
-    mt_002_clone_shape = tf.zeros_like(numpy_template, dtype=tf.float32)
-    print('mt_002_clone_shape = ', mt_002_clone_shape, '\n')
-    # shape保持不变
-    assert numpy_template.shape == mt_002_clone_shape.shape
-
-    # 全1矩阵
-    # def ones(shape: {_shape_tuple},
-    #          dtype: DType = dtypes.float32,
-    #          name: Any = None) -> Union[object, Tensor]
-    mt_003 = tf.ones((3, 3), dtype=tf.int32)
-    print('mt_003 = ', mt_003, '\n')
-
-    # 按照模板创建全1矩阵，与`zeros_like()`函数类似
-    const_template = tf.constant([[21], [22], [33]], dtype=tf.float32)
-    mt_003_clone_shape = tf.zeros_like(const_template, dtype=tf.int16)
-    print('mt_003_clone_shape = ', mt_003_clone_shape, '\n')
-    # shape保持不变
-    assert const_template.shape == mt_003_clone_shape.shape
-    # dtype被重新设置
-    assert const_template.dtype != mt_003_clone_shape.dtype
-
-
 def random_uniform():
     """
     从"服从指定均匀分布的序列"中随机取出指定个数的值。
@@ -223,6 +174,22 @@ def random_gamma():
     _draw()
 
 
+def random_shuffle():
+    # 随机打乱张量顺序, 保持shape不变
+    # tf.random.shuffle(
+    #     value, seed=None, name=None
+    # )
+    numpy_const_001 = np.array(np.array([[1, 2] , [3, 4], [5, 6]]))
+    original_tensor = tf.constant(numpy_const_001)
+    shuffled_tensor = tf.random.shuffle(original_tensor)
+
+    assert original_tensor.shape == shuffled_tensor.shape
+    assert isinstance(shuffled_tensor, tf.Tensor)
+
+    print('original_tensor = ', original_tensor, '\n')
+    print('shuffled_tensor = ', shuffled_tensor, '\n')
+
+
 def linear_algebra():
     """
     线性代数 Y = XW + b
@@ -271,10 +238,10 @@ def linear_algebra():
 
 
 if __name__ == '__main__':
-    matrix()
     random_uniform()
     random_normal()
     random_poisson()
     random_categorical()
     random_gamma()
+    random_shuffle()
     linear_algebra()
