@@ -175,7 +175,7 @@ def random_gamma():
 
 
 def random_shuffle():
-    # 随机打乱张量顺序, 保持shape不变
+    # 按照第0个维度, 随机打乱张量顺序, 保持shape不变
     # tf.random.shuffle(
     #     value, seed=None, name=None
     # )
@@ -237,7 +237,12 @@ def linear_algebra():
             tf.print("")
 
 
+def confirm_version():
+    print(tf.__version__)
+
+
 if __name__ == '__main__':
+    confirm_version()
     random_uniform()
     random_normal()
     random_poisson()

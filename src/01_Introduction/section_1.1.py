@@ -93,7 +93,12 @@ def calculate():
     print(x @ y, '\n')
 
 
+def confirm_version():
+    print(tf.__version__)
+
+
 if __name__ == '__main__':
+    confirm_version()
     constant_basic()
     constant_calculate()
     calculate()
