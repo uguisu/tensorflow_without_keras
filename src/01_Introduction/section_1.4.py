@@ -45,18 +45,18 @@ def demo_variable_calculate():
     assert 2.1 == v_2.value()
 
     # 变量不能直接, 和数字相加, 下面的操作会抛出AttributeError
-    try:
-        v_2 = v_2 + 3
-    except AttributeError:
-        print('wow, 不能直接与数字相加')
+    # try:
+    #     v_2 = v_2 + 3
+    # except AttributeError:
+    #     print('wow, 不能直接与数字相加')
+    #
+    # 注意!!! 这个try方法一旦执行, v_2 的类型就会发生改变, 并导致assign_add()发生错误
+    # AttributeError: 'tensorflow.python.framework.ops.EagerTensor' object has no attribute 'assign_add'
 
-    # TODO 要和数字相加, 需要使用函数assign_add()
-    # TODO AttributeError: 'tensorflow.python.framework.ops.EagerTensor' object has no attribute 'assign_add'
-    # v_2.assign_add(0.4)
-    # print('new v_2.value = ', v_2.value())
-    # assert 2.5 == v_2.value()
-
-    # print('eager = ', tf.executing_eagerly())
+    # 要和数字相加, 需要使用函数assign_add()
+    v_2.assign_add(0.4)
+    print('new2 v_2.value = ', v_2.value())
+    assert 2.5 == v_2.value()
 
     # 乘法
     # w: [ 1,
@@ -65,12 +65,14 @@ def demo_variable_calculate():
     w = tf.Variable([[1.], [2.]])
     x = tf.constant([[3., 4.]])
     v_3 = tf.matmul(w, x)
+    # 注意!!! v_3 也会变成 EagerTensor 类型，所以不能直接使用value()方法
     # print('v_3.value = ', v_3.value())
     print('v_3 = ', v_3)
 
 
 def confirm_version():
-    print(tf.__version__)
+    print('tensorflow version = ', tf.__version__)
+    print('eager = ', tf.executing_eagerly())
 
 
 if __name__ == '__main__':
